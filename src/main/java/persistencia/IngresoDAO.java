@@ -21,11 +21,11 @@ public class IngresoDAO {
     public ArrayList<Ingreso> consultarIngresos() {
         ArrayList<Ingreso> lista = new ArrayList<>();
         ConexionBD con = new ConexionBD();
-        ResultSet rs = con.ejecutarQuery("SELECT id, nombre FROM ingreso");
+        ResultSet rs = con.ejecutarQuery("SELECT id, nombreIngreso FROM ingreso");
         try {
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
+                String nombre = rs.getString("nombreIngreso");
                 Ingreso j = new Ingreso(id, nombre);
                 lista.add(j);
             }
@@ -47,7 +47,7 @@ public class IngresoDAO {
         String nombre = j.getNombre();
         
         
-        String sql = "INSERT INTO ingreso (nombre) VALUES ('"+nombre+"') ";
+        String sql = "INSERT INTO ingreso (nombreIngreso) VALUES ('"+nombre+"') ";
         System.out.println(sql);
         ResultSet rs = con.ejecutarInsert(sql);
         int id = 0;
