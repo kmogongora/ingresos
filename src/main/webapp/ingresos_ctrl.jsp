@@ -11,16 +11,18 @@
         <%
             String id = request.getParameter("txtId");
             String nombre = request.getParameter("txtNombre");
+            double valor = Double.parseDouble(request.getParameter("valorIngreso"));
+            
                         String accion = request.getParameter("btnSubmit");
 
             if (accion.equals("nuevo")) {
-                Ingreso j = new Ingreso(nombre);
+                Ingreso j = new Ingreso(nombre, valor);
                 ColeccionIngreso coleccion = new ColeccionIngreso();
                 boolean guardado = coleccion.guardarIngreso(j);
                 if (guardado == true) {
-                    out.println("Usuario guardado exitosamente");
+                    out.println("Ingreso guardado exitosamente");
                 } else {
-                    out.println("Información del Usuario no se guardó.");
+                    out.println("Información del Ingreso no se guardó.");
                 }
             }
         %>

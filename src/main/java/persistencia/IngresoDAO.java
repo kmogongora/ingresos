@@ -3,8 +3,6 @@ package persistencia;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import logica.Ingreso;
 
 /**
@@ -21,12 +19,14 @@ public class IngresoDAO {
     public ArrayList<Ingreso> consultarIngresos() {
         ArrayList<Ingreso> lista = new ArrayList<>();
         ConexionBD con = new ConexionBD();
-        ResultSet rs = con.ejecutarQuery("SELECT id, nombreIngreso FROM ingreso");
+        ResultSet rs = con.ejecutarQuery("SELECT id, nombreIngreso, valorIngreso FROM ingreso");
         try {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String nombre = rs.getString("nombreIngreso");
-                Ingreso j = new Ingreso(id, nombre);
+                double valor = rs.getDouble("valorIngreso");
+                
+                Ingreso j = new Ingreso(id, nombre, valor);
                 lista.add(j);
             }
         } catch (SQLException ex) {
@@ -45,9 +45,10 @@ public class IngresoDAO {
     public int guardarNuevoIngreso(Ingreso j) {
         ConexionBD con = new ConexionBD();
         String nombre = j.getNombre();
+        double valor = j.getValor();
         
         
-        String sql = "INSERT INTO ingreso (nombreIngreso) VALUES ('"+nombre+"') ";
+        String sql = "INSERT INTO ingreso (nombreIngreso, valorIngreso) VALUES ('"+nombre+"','"+valor+"') ";
         System.out.println(sql);
         ResultSet rs = con.ejecutarInsert(sql);
         int id = 0;

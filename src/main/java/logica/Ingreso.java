@@ -7,6 +7,7 @@ package logica;
 public class Ingreso {
     private int id;
     private String nombre;
+    private double valor;
 
 
     
@@ -14,16 +15,17 @@ public class Ingreso {
     }
 
     
-    public Ingreso(String nombre) {
+    public Ingreso(String nombre, double valor) {
         this.nombre = nombre;
+        this.valor = valor;
 
     }
     
     
-    public Ingreso(int id, String nombre) {
+    public Ingreso(int id, String nombre, double valor) {
         this.id = id;
         this.nombre = nombre;
-       
+        this.valor = valor;       
     }
     
     
@@ -45,6 +47,16 @@ public class Ingreso {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+    
+    
 
    
 }

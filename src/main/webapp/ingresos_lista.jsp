@@ -33,6 +33,7 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Valor</th>
                          
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                         <tr>
                             <td scope="row"><%= j.getId()%></td>
                             <td><%= j.getNombre()%></td>
+                             <td><%= j.getValor()%></td>
                            
                             <td>
                                 <button type="button" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button>
